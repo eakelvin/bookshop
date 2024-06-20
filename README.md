@@ -24,15 +24,33 @@ curl https://localhost:44324/api/booksdata/findbook/{id}
 Get a List of Rentals
 curl https://localhost:44324/api/rentalsdata/listrentals
 
-Get a Single Book
+Get a Single Rental
 curl https://localhost:44324/api/rentalsdata/findrental/{id}
 
 Add a new Author
 curl https://localhost:44324/api/authorsdata/addauthor
 
+Add a new Book
+curl https://localhost:44324/api/booksdata/addbook
+
+Add a new Rental
+curl https://localhost:44324/api/rentalsdata/addrental
+
 Delete an Author
 curl -d "" https://localhost:44324/api/authorsdata/deleteauthor/{id}
 
+Delete a Book
+curl -d "" https://localhost:44324/api/booksdata/deletebook/{id}
+
+Delete a Rental
+curl -d "" https://localhost:44324/api/rentalsdata/deleterental/{id}
+
 Update an Author
-curl -H https://localhost:44324/api/authordata/updateauthor/{id}
+curl -H https://localhost:44324/api/authorsdata/updateauthor/{id}
+
+Update a Book
+curl -H https://localhost:44324/api/booksdata/updatebook/{id}
+
+Update a Rental
+curl -H https://localhost:44324/api/rentalsdata/updaterental/{id}
 

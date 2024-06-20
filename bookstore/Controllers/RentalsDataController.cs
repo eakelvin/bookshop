@@ -60,7 +60,8 @@ namespace bookstore.Controllers
 
         // POST: api/RentalsData/UpdateRental/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutRental(int id, Rental rental)
+        [HttpPost]
+        public IHttpActionResult UpdateRental(int id, Rental rental)
         {
             if (!ModelState.IsValid)
             {

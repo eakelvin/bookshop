@@ -105,6 +105,9 @@ namespace bookstore.Controllers
             }
             else
             {
+                var errorMessage = response.Content.ReadAsStringAsync().Result;
+                Debug.WriteLine($"DELETE request failed with status code: {response.StatusCode}");
+                Debug.WriteLine($"Error message: {errorMessage}");
                 return RedirectToAction("Error");
             }
         }
@@ -126,7 +129,7 @@ namespace bookstore.Controllers
             string url = "booksdata/deletebook/"+id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
-            HttpResponseMessage response = client.DeleteAsync(url).Result;
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("List");

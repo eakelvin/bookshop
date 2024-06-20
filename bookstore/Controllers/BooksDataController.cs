@@ -80,16 +80,20 @@ namespace bookstore.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
-                if (!BookExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                var innerException = ex.InnerException;
+                Debug.WriteLine($"DbUpdateException occurred: {innerException.Message}");
+                throw;
+
+                //if (!BookExists(id))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -112,6 +116,7 @@ namespace bookstore.Controllers
 
         // POST: api/BooksData/DeleteBook/5
         [ResponseType(typeof(Book))]
+        [HttpPost]
         public IHttpActionResult DeleteBook(int id)
         {
             Book book = db.Books.Find(id);
